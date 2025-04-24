@@ -40,13 +40,16 @@ namespace KingJwtAuth.Attributes
 
         private void RefreshCookie(HttpContext httpContext, UserTokenDto userTokenDto)
         {
+            // compute expiration dateTime
+            //TODO: change [AddMinutes] to [AddDays]
+            var exp = DateTimeOffset.UtcNow.AddMinutes(TokenStatics.ExpirationDayAuthCookie);
             // Generate a token
             //NOTE: when we are generating a TOKEN, we put the user's information (like ROLE) in it, not in Cookie directly!
             TokenService tokenService = new TokenService();
             var newToken = tokenService.GenerateKingToken(userTokenDto, TokenStatics.TokenKey);
             // reCreate the cookie
             CookieService cookieService = new CookieService(httpContext);
-            cookieService.GenerateCookie(TokenStatics.AuthCookieName, newToken, TokenStatics.ExpirationAuthCookie);
+            cookieService.GenerateCookie(TokenStatics.AuthCookieName, newToken, exp);
         }
     }
 }

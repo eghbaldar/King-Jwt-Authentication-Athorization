@@ -1,6 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Protected Page";
 }
+@model UserTokenDto
 <h1>@ViewData["Title"]</h1>
 
 <p>This page is protected! if you are seeing this, it means you are verfied already</p>
+<br/>
+<span>the user's id is: @Model.UserId</span>
+<br/>
+<span>the user's role is: @Model.Role</span>

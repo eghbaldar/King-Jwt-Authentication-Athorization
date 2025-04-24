@@ -63,8 +63,9 @@ namespace KingJwtAuth.Services.Token
             var jsonPayload = Encoding.UTF8.GetString(Base64UrlDecode(payload));
             userPayload = JsonConvert.DeserializeObject<UserTokenDto>(jsonPayload);
 
-            var userTokenExp = userPayload.Exp.ToUniversalTime();
-            if (userTokenExp < DateTimeOffset.UtcNow) return false;
+            var _userTokenExp = userPayload.Exp.ToUniversalTime();
+            var _now = DateTimeOffset.UtcNow;
+            if (_userTokenExp < _now) return false;
 
             return true;
         }

@@ -135,3 +135,4 @@ C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.pdb
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.genruntimeconfig.cache
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\bin\Debug\net8.0\KingJwtAuth.pdb
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\ref\KingJwtAuth.dll
+C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.sourcelink.json

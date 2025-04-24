@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\services\\token\\kingtokenaccessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\services\\token\\kingtokenaccessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\attributes\\kingattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\attributes\\kingattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\services\\token\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\services\\token\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\attributes\\kingattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\attributes\\kingattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\services\\token\\tokenstatics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\services\\token\\tokenstatics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,41 +42,80 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RefreshToken.cs",
+              "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Entities\\RefreshToken.cs",
+              "RelativeDocumentMoniker": "KingJwtAuth\\Entities\\RefreshToken.cs",
+              "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Entities\\RefreshToken.cs",
+              "RelativeToolTip": "KingJwtAuth\\Entities\\RefreshToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T11:30:54.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "KingJwtAuth\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "KingJwtAuth\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T13:31:18.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KingTokenAccessor.cs",
+              "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Services\\Token\\KingTokenAccessor.cs",
+              "RelativeDocumentMoniker": "KingJwtAuth\\Services\\Token\\KingTokenAccessor.cs",
+              "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Services\\Token\\KingTokenAccessor.cs",
+              "RelativeToolTip": "KingJwtAuth\\Services\\Token\\KingTokenAccessor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T09:22:00.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TokenStatics.cs",
+              "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Services\\Token\\TokenStatics.cs",
+              "RelativeDocumentMoniker": "KingJwtAuth\\Services\\Token\\TokenStatics.cs",
+              "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Services\\Token\\TokenStatics.cs",
+              "RelativeToolTip": "KingJwtAuth\\Services\\Token\\TokenStatics.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T08:15:05.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "TokenService.cs",
               "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Services\\Token\\TokenService.cs",
               "RelativeDocumentMoniker": "KingJwtAuth\\Services\\Token\\TokenService.cs",
               "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Services\\Token\\TokenService.cs",
               "RelativeToolTip": "KingJwtAuth\\Services\\Token\\TokenService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwD8AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T14:28:25.473Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "KingAttribute.cs",
               "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Attributes\\KingAttribute.cs",
               "RelativeDocumentMoniker": "KingJwtAuth\\Attributes\\KingAttribute.cs",
               "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Attributes\\KingAttribute.cs",
               "RelativeToolTip": "KingJwtAuth\\Attributes\\KingAttribute.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwBkAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T12:57:43.622Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "KingJwtAuth\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "KingJwtAuth\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T13:31:18.83Z",
               "EditorCaption": ""
             }
           ]
