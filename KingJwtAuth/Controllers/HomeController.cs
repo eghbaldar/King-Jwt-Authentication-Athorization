@@ -27,7 +27,6 @@ namespace KingJwtAuth.Controllers
             var user = HttpContext.Items["CurrentUser"] as UserTokenDto;
             if (user == null) return RedirectToAction(TokenStatics.DestinationActionAfterLogout, TokenStatics.DestinationControllerAfterLogout);
             return View("ProtectedPage", user);
-
         }
     }
 }

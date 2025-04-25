@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|c:\\users\\kinh\\desktop\\kingjwtauth\\kingjwtauth\\attributes\\kingattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\attributes\\kingattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +22,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "KingJwtAuth\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "KingJwtAuth\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAB3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-25T19:55:23.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KingAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Attributes\\KingAttribute.cs",
+              "RelativeDocumentMoniker": "KingJwtAuth\\Attributes\\KingAttribute.cs",
+              "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Attributes\\KingAttribute.cs",
+              "RelativeToolTip": "KingJwtAuth\\Attributes\\KingAttribute.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAA5wEAAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T19:54:01.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "KingJwtAuth\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "KingJwtAuth\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T19:49:31.35Z",
+              "EditorCaption": ""
             }
           ]
         }

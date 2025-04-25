@@ -4,6 +4,7 @@ using KingJwtAuth.Services.Token;
 using KingJwtAuth.Services.UserRefreshToken;
 using KingJwtAuth.Services.Users;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace KingJwtAuth.Controllers
 {
@@ -82,6 +83,18 @@ namespace KingJwtAuth.Controllers
             ///////////////////////////////////////////////////////////////
             return Json(new { token = checkCookie });
 
+        }
+        public IActionResult SignOut()
+        {
+            // 1. Remove the auth & refresh cookie
+            Response.Cookies.Delete(TokenStatics.AuthCookieName);
+            Response.Cookies.Delete(TokenStatics.RefreshCookieName);
+
+            // 2. Clear claims identity (optional)
+            HttpContext.User = new ClaimsPrincipal(new ClaimsIdentity());
+
+            // 3. Redirect to login/home page
+            return RedirectToAction(TokenStatics.DestinationActionAfterLogout, TokenStatics.DestinationControllerAfterLogout);
         }
     }
 }

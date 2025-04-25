@@ -9,6 +9,7 @@ using System.Net.Http;
 using KingJwtAuth.Services.UserRefreshToken;
 using KingJwtAuth.Entities;
 using KingJwtAuth.Context;
+using System.Security.Claims;
 
 namespace KingJwtAuth.Attributes
 {
@@ -58,7 +59,18 @@ namespace KingJwtAuth.Attributes
             // check role
             if (valid && (outUserTokenDto.Role == role.ToString()))
             {
-                httpContext.Items["CurrentUser"] = outUserTokenDto; // ✅ Save user
+                //NOTE: Method [1] : to transfer the user's information
+                httpContext.Items["CurrentUser"] = outUserTokenDto;
+                //NOTE: Method [2] : to transfer the user's information
+                //the following method Highly recommended by the King! though.
+                var claims = new List<Claim> {
+                    new Claim("UserId", outUserTokenDto.UserId),
+                    new Claim("Role", outUserTokenDto.Role),
+                };
+                var identity = new ClaimsIdentity(claims, "custom");
+                httpContext.User = new ClaimsPrincipal(identity);
+                //
+
                 return outUserTokenDto;
             }
             else return null;

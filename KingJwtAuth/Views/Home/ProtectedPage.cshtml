@@ -6,6 +6,15 @@
 
 <p>This page is protected! if you are seeing this, it means you are verfied already</p>
 <br/>
+<br/>
+<h4 style="color:red;">Using method [1](httpContext.item) to get user's information:</h4>
 <span>the user's id is: @Model.UserId</span>
 <br/>
 <span>the user's role is: @Model.Role</span>
+
+
+<hr/>
+<h4 style="color:red;">Using method [2](ClaimsIdentity) to get user's information:</h4>
+<span>the user's id is: @User.FindFirst("UserId")?.Value</span>
+<br/>
+<span>the user's role is: @User.FindFirst("Role")?.Value</span>
