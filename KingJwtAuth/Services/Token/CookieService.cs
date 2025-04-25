@@ -10,13 +10,17 @@ namespace KingJwtAuth.Services.Token
         {
             _httpContext = httpContext;
         }
-        public string GenerateCookie(string cookieName, string token, DateTimeOffset exp)
-        {
-            _httpContext.Response.Cookies.Append(cookieName, token, new CookieOptions
+        public string GenerateCookie(string cookieName, string value, DateTimeOffset exp)
+            {
+            //TODO: remove the following code
+            var test = DateTimeOffset.UtcNow;
+
+            _httpContext.Response.Cookies.Append(cookieName, value, new CookieOptions
             {
                 HttpOnly = true,
-                Secure = false, // ok for local testing
-                SameSite = SameSiteMode.Strict,
+                Secure = false, // NOTE: change this value to TRUE for development environment!
+                SameSite = SameSiteMode.Lax,
+                //Expires = exp
                 Expires = exp
             });
             return $"Cookie '{cookieName}' set with expiration: {exp}";

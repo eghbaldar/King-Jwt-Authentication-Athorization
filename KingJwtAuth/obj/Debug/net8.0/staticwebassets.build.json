@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eX7HW7kAJ3KsDDnl2X3k8xDAtKUUttmViokdksGCABU=",
+  "Hash": "/wtdEd6hCYwlVqzPTIOsZg//dw+Br+Qz73WWIMsh8f0=",
   "Source": "KingJwtAuth",
   "BasePath": "_content/KingJwtAuth",
   "Mode": "Default",
@@ -55,6 +55,25 @@
       "OriginalItemSpec": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\KingJwtAuth.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\css\\login.css",
+      "SourceId": "KingJwtAuth",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\",
+      "BasePath": "_content/KingJwtAuth",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
+    },
+    {
       "Identity": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\css\\site.css",
       "SourceId": "KingJwtAuth",
       "SourceType": "Discovered",
@@ -91,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\js\\login.js",
+      "SourceId": "KingJwtAuth",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\",
+      "BasePath": "_content/KingJwtAuth",
+      "RelativePath": "js/login.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\login.js"
     },
     {
       "Identity": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\js\\site.js",

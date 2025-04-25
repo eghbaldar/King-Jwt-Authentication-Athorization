@@ -22,7 +22,37 @@ namespace KingJwtAuth.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("KingJwtAuth.Entities.RefreshToken", b =>
+            modelBuilder.Entity("KingJwtAuth.Entities.UserLogs", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Auth")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("IP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Method")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserAgent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserLogs");
+                });
+
+            modelBuilder.Entity("KingJwtAuth.Entities.UserRefreshToken", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,6 +60,10 @@ namespace KingJwtAuth.Migrations
 
                     b.Property<DateTime>("Exp")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("IP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsRevoke")
                         .HasColumnType("bit");
@@ -38,46 +72,56 @@ namespace KingJwtAuth.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserAgent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.ToTable("RefreshToken");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRefreshToken");
                 });
 
-            modelBuilder.Entity("KingJwtAuth.Entities.UserToken", b =>
+            modelBuilder.Entity("KingJwtAuth.Entities.Users", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Exp")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Fullname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("InsertDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Phone")
+                    b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserToken");
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("KingJwtAuth.Entities.UserRefreshToken", b =>
+                {
+                    b.HasOne("KingJwtAuth.Entities.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

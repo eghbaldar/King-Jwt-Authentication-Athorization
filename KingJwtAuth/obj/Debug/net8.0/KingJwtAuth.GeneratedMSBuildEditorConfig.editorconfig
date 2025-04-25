@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Kinh/Desktop/KingJwtAuth/KingJwtAuth/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Kinh/Desktop/KingJwtAuth/KingJwtAuth/Views/Home/GenerateCookie.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZW5lcmF0ZUNvb2tpZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

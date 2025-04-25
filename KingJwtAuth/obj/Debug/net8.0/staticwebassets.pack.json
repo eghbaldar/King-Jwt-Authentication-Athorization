@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\KingJwtAuth.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
       "Id": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\js\\login.js",
+      "PackagePath": "staticwebassets\\js\\login.js"
     },
     {
       "Id": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\wwwroot\\js\\site.js",

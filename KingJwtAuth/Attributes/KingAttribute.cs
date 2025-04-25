@@ -3,6 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using static KingJwtAuth.Attributes.KingAttributeEnum;
 using KingJwtAuth.Services.Token;
 using KingJwtAuth.Models;
+using KingJwtAuth.Services.UserLogs;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http;
+using KingJwtAuth.Services.UserRefreshToken;
+using KingJwtAuth.Entities;
+using KingJwtAuth.Context;
 
 namespace KingJwtAuth.Attributes
 {
@@ -15,41 +21,107 @@ namespace KingJwtAuth.Attributes
             _role = role;
         }
         public void OnAuthorization(AuthorizationFilterContext context)
-        {
+        {   
             HttpContext httpContext = context.HttpContext;
 
-            var user = CheckAccessLogic(httpContext, _role);
+            // Access the DI container from HttpContext
+            var serviceProvider = context.HttpContext.RequestServices;
+            var userRefreshTokenService = serviceProvider.GetRequiredService<UserRefreshTokenService>();
+            var userLogService = serviceProvider.GetRequiredService<UserLogsService>();
+
+            var user = CheckAccessLogic(httpContext, _role, userRefreshTokenService);
             if (user != null)
-                RefreshCookie(httpContext, user); // Refresh the cookie if valid
+                Log(httpContext,userLogService,true);
             else
-                context.Result = new RedirectToActionResult("Index", "Home", null); // unauthenticated user + redirect to main page or ...
+            {
+                // unauthenticated user + redirect to main page or ...
+                Log(httpContext, userLogService, false);
+                context.Result = new RedirectToActionResult(TokenStatics.DestinationActionAfterLogout, TokenStatics.DestinationControllerAfterLogout, null);
+            }
         }
-        private UserTokenDto CheckAccessLogic(HttpContext httpContext, UserRole role)
+        private UserTokenDto CheckAccessLogic(HttpContext httpContext, UserRole role, UserRefreshTokenService refreshTokenService)
         {
             // get the cookie
             var cookies = httpContext.Request.Cookies;
             cookies.TryGetValue(TokenStatics.AuthCookieName, out string? token);
-            if (token == null) return null;
+            if (token == null)
+            {
+                // check refreshToken whether is valid or not based on expiration of AccessToken Cookie
+                token = CheckRefreshCookie(httpContext, refreshTokenService);
+                if (token == null) { return null; }
+            }
             // validation process
             // NOTE: outoutUserTokenDto is a class that will be filled from cookie and we want to compare its decoded information to user cliams
-            TokenService tokenService = new TokenService();
-            var valid = tokenService.ValidateKingToken(token, TokenStatics.TokenKey, out UserTokenDto outoutUserTokenDto);
-            // check role
-            if (valid && (outoutUserTokenDto.Role == role.ToString())) return outoutUserTokenDto; else return null;
-        }
+            TokenAccessService tokenService = new TokenAccessService();
+            var valid = tokenService.ValidateKingToken(token, TokenStatics.AccessTokenKey, out UserTokenDto outUserTokenDto);
 
-        private void RefreshCookie(HttpContext httpContext, UserTokenDto userTokenDto)
+            // check role
+            if (valid && (outUserTokenDto.Role == role.ToString()))
+            {
+                httpContext.Items["CurrentUser"] = outUserTokenDto; // ✅ Save user
+                return outUserTokenDto;
+            }
+            else return null;
+        }
+        private string CheckRefreshCookie(HttpContext httpContext, UserRefreshTokenService refreshTokenService)
         {
-            // compute expiration dateTime
-            //TODO: change [AddMinutes] to [AddDays]
-            var exp = DateTimeOffset.UtcNow.AddMinutes(TokenStatics.ExpirationDayAuthCookie);
-            // Generate a token
-            //NOTE: when we are generating a TOKEN, we put the user's information (like ROLE) in it, not in Cookie directly!
-            TokenService tokenService = new TokenService();
-            var newToken = tokenService.GenerateKingToken(userTokenDto, TokenStatics.TokenKey);
-            // reCreate the cookie
+            // get the cookie
+            var cookies = httpContext.Request.Cookies;
+            cookies.TryGetValue(TokenStatics.RefreshCookieName, out string? outToken);
+            if (outToken == null) return null;
+
+            // get user' refreshToken from DB
+            var encodedToken = EncryptionHelper.DecryptEncryptedGuid(outToken, TokenStatics.RefreshTokenKey);
+
+            var userRefreshToken = refreshTokenService.GetRefreshTokenByToken(encodedToken);
+
+            if (userRefreshToken == null) return null;
+            if (encodedToken != userRefreshToken.Token) return null;
+
+
+            // generate a new accessToken & refreshToken
             CookieService cookieService = new CookieService(httpContext);
-            cookieService.GenerateCookie(TokenStatics.AuthCookieName, newToken, exp);
+
+
+            ///////////////////////////////////////////////////////////////            
+            ///                      RefreshToken
+            //NOTE: Be careful here, we don't need to create RefreshToken cookie anymore!
+            ///////////////////////////////////////////////////////////////
+
+
+            ///////////////////////////////////////////////////////////////
+            ///                      AccessToken
+            ///////////////////////////////////////////////////////////////
+
+
+            var exp = DateTimeOffset.UtcNow.AddMinutes(TokenStatics.ExpirationDayAuthCookie);// TODO: change [AddMinutes] to [AddDays]
+            // generate token
+            TokenAccessService tokenService = new TokenAccessService();
+            UserTokenDto userTokenDto = new UserTokenDto()
+            {
+                UserId = userRefreshToken.UserId.ToString(),
+                Role = userRefreshToken.Role,
+                Exp = exp.UtcDateTime, // Convert DateTimeOffset to DateTime (UTC time)
+            };
+            string newAccessToken = tokenService.GenerateToken(userTokenDto, TokenStatics.AccessTokenKey);
+            // generate cookie
+            var checkCookie = cookieService.GenerateCookie(TokenStatics.AuthCookieName, newAccessToken, exp);
+
+            ///////////////////////////////////////////////////////////////
+            ///                      Returned Value
+            ///////////////////////////////////////////////////////////////
+            return newAccessToken;
+        }
+        private void Log(HttpContext httpContext, UserLogsService userLogService,bool auth)
+        {
+            userLogService.PostUserLog(new RequestUserLogsServiceDto
+            {
+                IP = httpContext.Connection.RemoteIpAddress?.ToString(),
+                UserAgent = httpContext.Request.Headers["User-Agent"].ToString(),
+                Method = httpContext.Request.Method,
+                RequestPath = httpContext.Request.Path,
+                Auth = auth
+            });
         }
     }
 }

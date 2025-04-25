@@ -6,9 +6,9 @@ using System.Text;
 
 namespace KingJwtAuth.Services.Token
 {
-    public class TokenService
+    public class TokenAccessService
     {
-        public string GenerateKingToken(UserTokenDto payload, string secretKey)
+        public string GenerateToken(UserTokenDto payload, string secretKey)
         {
             string header = "{\"alg\":\"HS256\",\"typ\":\"JWT\"}";
             string encodedHeader = Base64UrlEncode(Encoding.UTF8.GetBytes(header));

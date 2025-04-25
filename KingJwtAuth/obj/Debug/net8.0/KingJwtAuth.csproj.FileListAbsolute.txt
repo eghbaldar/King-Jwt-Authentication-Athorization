@@ -118,6 +118,7 @@ C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.cspro
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.RazorAssemblyInfo.cache
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.RazorAssemblyInfo.cs
+C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.sourcelink.json
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\staticwebassets\msbuild.KingJwtAuth.Microsoft.AspNetCore.StaticWebAssets.props
@@ -135,4 +136,3 @@ C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.pdb
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.genruntimeconfig.cache
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\bin\Debug\net8.0\KingJwtAuth.pdb
 C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\ref\KingJwtAuth.dll
-C:\Users\Kinh\Desktop\KingJwtAuth\KingJwtAuth\obj\Debug\net8.0\KingJwtAuth.sourcelink.json

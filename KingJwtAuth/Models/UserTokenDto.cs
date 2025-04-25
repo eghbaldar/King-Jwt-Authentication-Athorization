@@ -1,5 +1,6 @@
 ﻿namespace KingJwtAuth.Models
 {
+    // the following DTO is used for VIEW (ProtectedPage.cshtml) & TokenAccessService.cs & TokenAccessor.cs & AuthController
     public class UserTokenDto
     {
         public string UserId { get; set; }
