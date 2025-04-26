@@ -12,7 +12,7 @@ namespace KingJwtAuth.Services
         {
             _context = context;
         }
-        public bool CheckForBan(string ip,string userAgent,Guid? userId)
+        public bool CheckForBan(string ip, string userAgent, Guid? userId, string requestPath, string methodName)
         {
             // Is Banned?
             var now = DateTime.UtcNow;
@@ -22,7 +22,7 @@ namespace KingJwtAuth.Services
 
             // Find suspicious activities
             var recentAttempts = _context.UserLogs
-                .Where(log => log.IP == ip)
+                .Where(log => log.IP == ip && log.RequestPath == requestPath && log.MethodName == methodName)
                 .Where(log => log.InsertDateTime > DateTime.UtcNow.AddMinutes(-1))
                 .Count();
 
@@ -36,7 +36,7 @@ namespace KingJwtAuth.Services
                     UserAgent = userAgent,
                     BanDate = DateTime.UtcNow,
                     ExpireDate = DateTime.UtcNow.AddHours(TokenStatics.ExpirationHourBannedUser),
-                    Reason = (userId == Guid.Empty) ? "Too many [Unauthorized] attempts.": "Too many [Authorized] attempts.",
+                    Reason = (userId == Guid.Empty) ? "Too many [Unauthorized] attempts." : "Too many [Authorized] attempts.",
                 };
                 _context.UsersSuspicious.Add(ban);
                 _context.SaveChanges();

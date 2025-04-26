@@ -11,6 +11,7 @@ using KingJwtAuth.Entities;
 using KingJwtAuth.Context;
 using System.Security.Claims;
 using KingJwtAuth.Services;
+using System.Reflection;
 
 namespace KingJwtAuth.Attributes
 {
@@ -38,33 +39,45 @@ namespace KingJwtAuth.Attributes
             {
                 //========================= authenticated user
                 // Set User's ban
-                if (CheckUserBan(httpContext, usersSuspiciousService, (user == null) ? Guid.Empty : Guid.Parse(user.UserId)))
+                string methodName = context.ActionDescriptor.DisplayName?.Split('(')[0].Split('.').Last(); // for example: IActionResult GetAllUsers() => this line returns: GetAllUsers
+                if (CheckUserBan(
+                    httpContext,
+                    usersSuspiciousService,
+                    (user == null) ? Guid.Empty : Guid.Parse(user.UserId),
+                    httpContext.Request.Path,
+                    methodName))
                 {
                     context.Result = new RedirectToActionResult(TokenStatics.BandPageAction, TokenStatics.BandPageController, null);
                     return;
                 }
                 // record the log
-                Log(httpContext, userLogService, true);
+                Log(httpContext, userLogService, true, methodName);
             }
             else
             {
                 //=========================  unauthenticated user + redirect to main page or ...
                 // Set User's ban
-                if (CheckUserBan(httpContext, usersSuspiciousService, (user == null) ? Guid.Empty : Guid.Parse(user.UserId)))
+                string methodName = context.ActionDescriptor.DisplayName?.Split('(')[0].Split('.').Last(); // for example: IActionResult GetAllUsers() => this line returns: GetAllUsers
+                if (CheckUserBan(
+                    httpContext,
+                    usersSuspiciousService,
+                    (user == null) ? Guid.Empty : Guid.Parse(user.UserId),
+                    httpContext.Request.Path,
+                    methodName))
                 {
                     context.Result = new RedirectToActionResult(TokenStatics.BandPageAction, TokenStatics.BandPageController, null);
                     return;
-                }                
-                // record the log
-                Log(httpContext, userLogService, false);
+                }
+                // record the log                
+                Log(httpContext, userLogService, false, methodName);
                 context.Result = new RedirectToActionResult(TokenStatics.DestinationActionAfterLogout, TokenStatics.DestinationControllerAfterLogout, null);
             }
         }
-        private bool CheckUserBan(HttpContext httpContext, UsersSuspiciousService service,Guid? userId)
+        private bool CheckUserBan(HttpContext httpContext, UsersSuspiciousService service,Guid? userId,string requestPath,string methodName)
         {
             var ip = httpContext.Connection.RemoteIpAddress?.ToString();
             var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
-            return service.CheckForBan(ip, userAgent, userId);
+            return service.CheckForBan(ip, userAgent, userId, requestPath,methodName);
         }
 
         private UserTokenDto CheckAccessLogic(HttpContext httpContext, UserRole role, UserRefreshTokenService refreshTokenService)
@@ -156,7 +169,7 @@ namespace KingJwtAuth.Attributes
             ///////////////////////////////////////////////////////////////
             return newAccessToken;
         }
-        private void Log(HttpContext httpContext, UserLogsService userLogService, bool auth)
+        private void Log(HttpContext httpContext, UserLogsService userLogService, bool auth, string methodname)
         {
             userLogService.PostUserLog(new RequestUserLogsServiceDto
             {
@@ -164,7 +177,8 @@ namespace KingJwtAuth.Attributes
                 UserAgent = httpContext.Request.Headers["User-Agent"].ToString(),
                 Method = httpContext.Request.Method,
                 RequestPath = httpContext.Request.Path,
-                Auth = auth
+                Auth = auth,
+                MethodName = methodname
             });
         }
     }

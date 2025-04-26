@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Protected Page";
+}
+@using System.Security.Claims
+@model UserTokenDto
+<h1>@ViewData["Title"]</h1>
+
+<p>This page is protected! if you are seeing this, it means you are verfied already</p>
+<br />
+<br />
+<h4 style="color:red;">Using method [1](httpContext.item) to get user's information:</h4>
+<span>the user's id is: @Model.UserId</span>
+<br />
+<span>the user's role is: @Model.Role</span>
+
+
+<hr />
+<h4 style="color:red;">Using method [2](ClaimsIdentity) to get user's information:</h4>
+
+@*the following code works when you use method [2] without updation*@
+@* <span>the user's id is: @User.FindFirst("UserId")?.Value</span>
+<br/>
+<span>the user's role is: @User.FindFirst("Role")?.Value</span> *@
+
+@*Method [2] with updation*@
+@{
+    var claimIdentity = User.Identity as ClaimsIdentity;
+}
+<span>
+    the user's id is:
+    @{
+        <p>@claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value.ToString()</p>
+    }
+</span>
+<span>
+    the user's role is:
+    @{
+        <p>@claimIdentity.FindFirst(ClaimTypes.Role).Value.ToString()</p>
+    }
+</span>
+

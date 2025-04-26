@@ -7,6 +7,7 @@ namespace KingJwtAuth.Services.UserLogs
         public string RequestPath { get; set; }
         public string Method { get; set; }
         public string IP { get; set; }
+        public string MethodName { get; set; }
         public string UserAgent { get; set; }
         public bool Auth { get; set; }
     }
@@ -26,6 +27,7 @@ namespace KingJwtAuth.Services.UserLogs
                 UserAgent = req.UserAgent,
                 RequestPath = req.RequestPath,
                 Auth = req.Auth,
+                MethodName = req.MethodName,
             };
             _context.UserLogs.Add(userLogs);
             _context.SaveChanges();
