@@ -3,7 +3,9 @@ using KingJwtAuth.Models;
 using KingJwtAuth.Services.Token;
 using KingJwtAuth.Services.UserRefreshToken;
 using KingJwtAuth.Services.Users;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 using System.Security.Claims;
 
 namespace KingJwtAuth.Controllers
@@ -95,6 +97,12 @@ namespace KingJwtAuth.Controllers
 
             // 3. Redirect to login/home page
             return RedirectToAction(TokenStatics.DestinationActionAfterLogout, TokenStatics.DestinationControllerAfterLogout);
+        }
+        public IActionResult Forbbiden()
+        {
+            var ip = HttpContext.Connection.RemoteIpAddress?.ToString();
+            var userAgent = HttpContext.Request.Headers["User-Agent"].ToString();
+            return View("Forbbiden",$"IP: {ip} <br/> User-Agent: {userAgent}");
         }
     }
 }

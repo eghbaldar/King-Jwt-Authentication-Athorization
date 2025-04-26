@@ -10,6 +10,7 @@ using KingJwtAuth.Services.UserRefreshToken;
 using KingJwtAuth.Entities;
 using KingJwtAuth.Context;
 using System.Security.Claims;
+using KingJwtAuth.Services;
 
 namespace KingJwtAuth.Attributes
 {
@@ -22,24 +23,50 @@ namespace KingJwtAuth.Attributes
             _role = role;
         }
         public void OnAuthorization(AuthorizationFilterContext context)
-        {   
+        {
             HttpContext httpContext = context.HttpContext;
 
             // Access the DI container from HttpContext
             var serviceProvider = context.HttpContext.RequestServices;
             var userRefreshTokenService = serviceProvider.GetRequiredService<UserRefreshTokenService>();
             var userLogService = serviceProvider.GetRequiredService<UserLogsService>();
+            var usersSuspiciousService = serviceProvider.GetRequiredService<UsersSuspiciousService>();
 
+            // check user's token
             var user = CheckAccessLogic(httpContext, _role, userRefreshTokenService);
             if (user != null)
-                Log(httpContext,userLogService,true);
+            {
+                //========================= authenticated user
+                // Set User's ban
+                if (CheckUserBan(httpContext, usersSuspiciousService, (user == null) ? Guid.Empty : Guid.Parse(user.UserId)))
+                {
+                    context.Result = new RedirectToActionResult(TokenStatics.BandPageAction, TokenStatics.BandPageController, null);
+                    return;
+                }
+                // record the log
+                Log(httpContext, userLogService, true);
+            }
             else
             {
-                // unauthenticated user + redirect to main page or ...
+                //=========================  unauthenticated user + redirect to main page or ...
+                // Set User's ban
+                if (CheckUserBan(httpContext, usersSuspiciousService, (user == null) ? Guid.Empty : Guid.Parse(user.UserId)))
+                {
+                    context.Result = new RedirectToActionResult(TokenStatics.BandPageAction, TokenStatics.BandPageController, null);
+                    return;
+                }                
+                // record the log
                 Log(httpContext, userLogService, false);
                 context.Result = new RedirectToActionResult(TokenStatics.DestinationActionAfterLogout, TokenStatics.DestinationControllerAfterLogout, null);
             }
         }
+        private bool CheckUserBan(HttpContext httpContext, UsersSuspiciousService service,Guid? userId)
+        {
+            var ip = httpContext.Connection.RemoteIpAddress?.ToString();
+            var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
+            return service.CheckForBan(ip, userAgent, userId);
+        }
+
         private UserTokenDto CheckAccessLogic(HttpContext httpContext, UserRole role, UserRefreshTokenService refreshTokenService)
         {
             // get the cookie
@@ -124,7 +151,7 @@ namespace KingJwtAuth.Attributes
             ///////////////////////////////////////////////////////////////
             return newAccessToken;
         }
-        private void Log(HttpContext httpContext, UserLogsService userLogService,bool auth)
+        private void Log(HttpContext httpContext, UserLogsService userLogService, bool auth)
         {
             userLogService.PostUserLog(new RequestUserLogsServiceDto
             {

@@ -1,4 +1,5 @@
 using KingJwtAuth.Context;
+using KingJwtAuth.Services;
 using KingJwtAuth.Services.UserLogs;
 using KingJwtAuth.Services.UserRefreshToken;
 using KingJwtAuth.Services.Users;
@@ -15,6 +16,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<UserRefreshTokenService>();
 builder.Services.AddScoped<UserLogsService>();
+builder.Services.AddScoped<UsersSuspiciousService>();
 
 
 builder.Services.AddScoped<IDataBaseContext, DataBaseContext>();

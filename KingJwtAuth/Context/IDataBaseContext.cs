@@ -8,6 +8,7 @@ namespace KingJwtAuth.Context
         DbSet<Users> Users { get; set; }
         DbSet<UserLogs> UserLogs { get; set; }
         DbSet<UserRefreshToken> UserRefreshToken { get; set; }
+        DbSet<UsersSuspicious> UsersSuspicious { get; set; }
         //SaveChanges
         int SaveChanges(bool acceptAllChangesOnSuccess);
         int SaveChanges();
@@ -21,6 +22,7 @@ namespace KingJwtAuth.Context
         public DbSet<Users> Users { get; set; }
         public DbSet<UserLogs> UserLogs { get; set; }
         public DbSet<UserRefreshToken> UserRefreshToken { get; set; }
+        public DbSet<UsersSuspicious> UsersSuspicious { get; set; }
         public override int SaveChanges()
         {
             return base.SaveChanges();
