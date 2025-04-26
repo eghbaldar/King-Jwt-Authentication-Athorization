@@ -18,10 +18,11 @@ namespace KingJwtAuth.Attributes
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class KingAttribute : Attribute, IAuthorizationFilter
     {
-        private readonly UserRole _role;
-        public KingAttribute(UserRole role)
+        private readonly UserRole[] _roles;
+        //NOTE: means you can pass one or many enum values naturally without needing an array manually!
+        public KingAttribute(params UserRole[] roles)
         {
-            _role = role;
+            _roles = roles;
         }
         public void OnAuthorization(AuthorizationFilterContext context)
         {
@@ -34,7 +35,7 @@ namespace KingJwtAuth.Attributes
             var usersSuspiciousService = serviceProvider.GetRequiredService<UsersSuspiciousService>();
 
             // check user's token
-            var user = CheckAccessLogic(httpContext, _role, userRefreshTokenService);
+            var user = CheckAccessLogic(httpContext, userRefreshTokenService, _roles);
             if (user != null)
             {
                 //========================= authenticated user
@@ -79,8 +80,7 @@ namespace KingJwtAuth.Attributes
             var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
             return service.CheckForBan(ip, userAgent, userId, requestPath,methodName);
         }
-
-        private UserTokenDto CheckAccessLogic(HttpContext httpContext, UserRole role, UserRefreshTokenService refreshTokenService)
+        private UserTokenDto CheckAccessLogic(HttpContext httpContext, UserRefreshTokenService refreshTokenService, params UserRole[] roles)
         {
             // get the cookie
             var cookies = httpContext.Request.Cookies;
@@ -97,7 +97,7 @@ namespace KingJwtAuth.Attributes
             var valid = tokenService.ValidateKingToken(token, TokenStatics.AccessTokenKey, out UserTokenDto outUserTokenDto);
 
             // check role
-            if (valid && (outUserTokenDto.Role == role.ToString()))
+            if (valid && (roles.Any(r => r.ToString() == outUserTokenDto.Role)))
             {
                 //NOTE: Method [1] : to transfer the user's information
                 httpContext.Items["CurrentUser"] = outUserTokenDto;

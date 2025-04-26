@@ -22,7 +22,7 @@ namespace KingJwtAuth.Controllers
             if (user == null) return RedirectToAction(TokenStatics.DestinationActionAfterLogout, TokenStatics.DestinationControllerAfterLogout);
             return View("ProtectedPage", user);
         }
-        [KingAttribute(KingAttributeEnum.UserRole.Admin)]
+        [KingAttribute(KingAttributeEnum.UserRole.Admin, KingAttributeEnum.UserRole.User)]
         public IActionResult ProtectedPage2()
         {
             //NOTE: HttpContext.Items["CurrentUser"] is scoped per request, per user.
