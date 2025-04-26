@@ -89,10 +89,15 @@ namespace KingJwtAuth.Attributes
                 //NOTE: Method [1] : to transfer the user's information
                 httpContext.Items["CurrentUser"] = outUserTokenDto;
                 //NOTE: Method [2] : to transfer the user's information
+                //var claims = new List<Claim> {
+                //    new Claim("UserId", outUserTokenDto.UserId),
+                //    new Claim("Role", outUserTokenDto.Role),
+                //};
+                //NOTE: Update the method [2]
                 //the following method Highly recommended by the King! though.
                 var claims = new List<Claim> {
-                    new Claim("UserId", outUserTokenDto.UserId),
-                    new Claim("Role", outUserTokenDto.Role),
+                    new Claim(ClaimTypes.NameIdentifier, outUserTokenDto.UserId),
+                    new Claim(ClaimTypes.Role, outUserTokenDto.Role),
                 };
                 var identity = new ClaimsIdentity(claims, "custom");
                 httpContext.User = new ClaimsPrincipal(identity);

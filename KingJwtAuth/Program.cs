@@ -11,8 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
 builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<UserRefreshTokenService>();
 builder.Services.AddScoped<UserLogsService>();

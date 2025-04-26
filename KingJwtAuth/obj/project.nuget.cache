@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "INizFpD0NYU=",
+  "dgSpecHash": "tuxMexLKd38=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\KingJwtAuth.csproj",
+  "projectFilePath": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\KingJwtAuth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kinh\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Kinh\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

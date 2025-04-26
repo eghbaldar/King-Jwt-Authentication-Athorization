@@ -6,6 +6,8 @@
         public static string RefreshCookieName = "KingRefreshCookie";
 
         //TODO: change the followign values to DECODE ones
+        //use:AES Encryption
+        //for example use: https://anycript.com/crypto
         public static string AccessTokenKey = "your-secret-key-that-must-be-changed-to-a-good-one";
         public static string RefreshTokenKey = "your-different-secret-key-that-must-be-changed-to-a-good-one";
 

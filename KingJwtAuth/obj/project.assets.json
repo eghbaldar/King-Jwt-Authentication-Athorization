@@ -4067,11 +4067,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\KingJwtAuth.csproj",
+      "projectUniqueName": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\KingJwtAuth.csproj",
       "projectName": "KingJwtAuth",
-      "projectPath": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\KingJwtAuth.csproj",
+      "projectPath": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\KingJwtAuth.csproj",
       "packagesPath": "C:\\Users\\Kinh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kinh\\Desktop\\KingJwtAuth\\KingJwtAuth\\obj\\",
+      "outputPath": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "d:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

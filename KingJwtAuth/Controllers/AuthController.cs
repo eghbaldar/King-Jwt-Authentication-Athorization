@@ -12,16 +12,13 @@ namespace KingJwtAuth.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly IHttpContextAccessor _contextAccessor;
         private readonly IUsersService _usersService;
         private readonly IDataBaseContext _context;
         public AuthController(
             IUsersService usersService,
-            IHttpContextAccessor contextAccessor,
             IDataBaseContext context)
         {
             _usersService = usersService;
-            _contextAccessor = contextAccessor;
             _context = context;
         }
         public IActionResult Login()

@@ -8,12 +8,6 @@ namespace KingJwtAuth.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IHttpContextAccessor _contextAccessor;
-        public HomeController(IHttpContextAccessor contextAccessor)
-        {
-            _contextAccessor = contextAccessor;
-        }
-
         public IActionResult Index()
         {
             return View();
