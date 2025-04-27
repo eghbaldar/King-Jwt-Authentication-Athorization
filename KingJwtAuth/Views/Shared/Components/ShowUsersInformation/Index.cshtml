@@ -1,0 +1,22 @@
+﻿<div class="alert alert-danger" role="alert">
+    <h3>This is the component that is inherirted from ViewComponent</h3>
+    @{
+        <h3 class="red"><span>@User.Identity.IsAuthenticated</span></h3>
+    }
+    <p>This component is tryint to load user's info! but it can't</p>
+    <p>We are not able to inherit "ViewComponent" as usual due to using [Authorization-Attribute] and preload user's information!</p>
+    <p>So, we have to use a special ViewComponent that is called here: KingBaseViewComponent</p>
+    <p>have a look at the following picture:</p>
+    <img src="/images/1.png"/>
+    <p>
+        The method [ShowUsersInformationViewComponent] of component cant be loaded <span><b clsas="red">even if:</b></span> 
+        <ul>
+            <li>We are logged in</li>
+            <li>
+                we use <b>
+                    [KingAttribute(KingAttributeEnum.UserRole.Admin, KingAttributeEnum.UserRole.User)]
+                </b>
+            </li>
+        </ul>
+    </p>
+</div>

@@ -1,0 +1,8 @@
+﻿<div class="alert alert-success" role="alert">
+    <h3>This is the component that is inherirted from KingBaseComponent</h3>
+    @{
+        <h3 class="red"><span>@User.Identity.IsAuthenticated</span></h3>
+    }
+    <p>This component is tryint to load user's info and it could well!</p>  
+    <p>NOTE: if you see [False] becasue you are not logged in, log in at frist (<a href="/auth/login">Login</a>)</p>
+</div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UgzuSZ3K+HsZ3x5UN69+Klzvo6dbkCRtXopvWhh3KtY=",
+  "Hash": "UqBXTHuobui6XXFj5njtr929Upje8xf2xsQod5jhlNU=",
   "Source": "KingJwtAuth",
   "BasePath": "_content/KingJwtAuth",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\wwwroot\\images\\1.png",
+      "SourceId": "KingJwtAuth",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\wwwroot\\",
+      "BasePath": "_content/KingJwtAuth",
+      "RelativePath": "images/1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\1.png"
     },
     {
       "Identity": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\wwwroot\\js\\login.js",
