@@ -2,6 +2,8 @@
     ViewData["Title"] = "Protected Page";
 }
 @using System.Security.Claims
+@using KingJwtAuth.Utilities
+
 @model UserTokenDto
 <h1>@ViewData["Title"]</h1>
 
@@ -9,9 +11,9 @@
 <br/>
 <br/>
 <h4 style="color:red;">Using method [1](httpContext.item) to get user's information:</h4>
-<span>the user's id is: @Model.UserId</span>
+<span>the user's id is: <b>@Model.UserId</b></span>
 <br/>
-<span>the user's role is: @Model.Role</span>
+<span>the user's role is: <b>@Model.Role</b></span>
 
 
 <hr/>
@@ -26,14 +28,37 @@
 @{
     var claimIdentity = User.Identity as ClaimsIdentity;
 }
+<b>@User.Identity.IsAuthenticated</b>
+<br/>
 <span>the user's id is:
     @{
-        <p>@claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value.ToString()</p>
+        <b>@claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value.ToString()</b>        
     }
 </span>
+<br/>
 <span>the user's role is: 
     @{
-        <p>@claimIdentity.FindFirst(ClaimTypes.Role).Value.ToString()</p>
+        <b>@claimIdentity.FindFirst(ClaimTypes.Role).Value.ToString()</b>
+    }
+</span>
+<hr />
+the following fetching is used "ClaimUtility" class:
+<br />
+<span>
+    the user's id is:
+    @{
+        <b>@claimIdentity.FindFirst(ClaimTypes.NameIdentifier).Value.ToString()</b>
+    }
+</span>
+<br />
+<span>    
+    the user's role is:
+    @{
+        foreach (var role in ClaimUtility.GetUserRoles(User as ClaimsPrincipal))
+        {
+         <b class="red">@role</b>
+         <br/>
+        }
     }
 </span>
 
