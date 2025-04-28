@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KingJwtAuth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15c1b36b67c2d8f9b0ca1a04d64521ffcaf6ed0e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89b683dda91c16c2062d0d5a54549e28d8842463")]
 [assembly: System.Reflection.AssemblyProductAttribute("KingJwtAuth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KingJwtAuth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

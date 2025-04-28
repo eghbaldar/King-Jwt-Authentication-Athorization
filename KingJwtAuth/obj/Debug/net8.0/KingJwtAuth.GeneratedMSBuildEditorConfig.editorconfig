@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm90ZWN0ZWRQYWdlMi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/_PROJECT_/KingJwtAuth/KingJwtAuth/Views/Home/ProtectedPage3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm90ZWN0ZWRQYWdlMy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/_PROJECT_/KingJwtAuth/KingJwtAuth/Views/Shared/Components/ShowUsersInformation/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2hvd1VzZXJzSW5mb3JtYXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
