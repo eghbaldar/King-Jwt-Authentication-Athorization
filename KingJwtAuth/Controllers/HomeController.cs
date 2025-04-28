@@ -44,5 +44,10 @@ namespace KingJwtAuth.Controllers
                 role = "User";
             return View("ProtectedPage3", role);
         }
+        [KingCheckUserAttribute(KingAttributeEnum.UserRole.Admin, KingAttributeEnum.UserRole.User)]
+        public IActionResult ProtectedPage4()
+        {
+            return View();
+        }
     }
 }

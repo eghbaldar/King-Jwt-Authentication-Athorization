@@ -1,33 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using KingJwtAuth.Models;
+using KingJwtAuth.Services.Token;
+using KingJwtAuth.Services.UserLogs;
+using KingJwtAuth.Services.UserRefreshToken;
+using KingJwtAuth.Services;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using static KingJwtAuth.Attributes.KingAttributeEnum;
-using KingJwtAuth.Services.Token;
-using KingJwtAuth.Models;
-using KingJwtAuth.Services.UserLogs;
-using Microsoft.AspNetCore.Http;
-using System.Net.Http;
-using KingJwtAuth.Services.UserRefreshToken;
-using KingJwtAuth.Entities;
-using KingJwtAuth.Context;
 using System.Security.Claims;
-using KingJwtAuth.Services;
-using System.Reflection;
 
 namespace KingJwtAuth.Attributes
-{    /// <summary>
-     /// What is the difference between this attribute and [KingAttribute]?
-     /// In [KingAttribute], the method fires only if the user is authenticated.
-     /// But in [KingCheckUserAttribute], the method runs either way—whether the user is authenticated or unauthenticated.
-     /// So what's the point of using [KingCheckUserAttribute]? The point is, if the target Razor page (in *.cshtml)
-     /// has some parts that need to access and check the user, this attribute ([KingCheckUserAttribute]) helps.
-     /// On the other hand, GUESTs (unauthenticated users) are able to see the material in it.
-     /// </summary>
+{
+    /// <summary>
+    /// What is the difference between this attribute and [KingAttribute]?
+    /// In [KingAttribute], the method fires only if the user is authenticated.
+    /// But in [KingCheckUserAttribute], the method runs either way—whether the user is authenticated or unauthenticated.
+    /// So what's the point of using [KingCheckUserAttribute]? The point is, if the target Razor page (in *.cshtml)
+    /// has some parts that need to access and check the user, this attribute ([KingCheckUserAttribute]) helps.
+    /// On the other hand, GUESTs (unauthenticated users) are able to see the material in it.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
-    public class KingAttribute : Attribute, IAuthorizationFilter
+    public class KingCheckUserAttribute : Attribute, IAuthorizationFilter
     {
+        protected UserTokenDto _user;
         private readonly UserRole[] _roles;
-        //NOTE: means you can pass one or many enum values naturally without needing an array manually!
-        public KingAttribute(params UserRole[] roles)
+        public KingCheckUserAttribute(params UserRole[] roles)
         {
             _roles = roles;
         }
@@ -35,11 +31,12 @@ namespace KingJwtAuth.Attributes
         {
             HttpContext httpContext = context.HttpContext;
 
-            // Access the DI container from HttpContext
-            var serviceProvider = context.HttpContext.RequestServices;
+            var serviceProvider = httpContext.RequestServices;
             var userRefreshTokenService = serviceProvider.GetRequiredService<UserRefreshTokenService>();
             var userLogService = serviceProvider.GetRequiredService<UserLogsService>();
             var usersSuspiciousService = serviceProvider.GetRequiredService<UsersSuspiciousService>();
+
+            _user = CheckAccessLogic(httpContext, userRefreshTokenService, _roles);
 
             // check user's token
             var user = CheckAccessLogic(httpContext, userRefreshTokenService, _roles);
@@ -63,7 +60,7 @@ namespace KingJwtAuth.Attributes
             }
             else
             {
-                //=========================  unauthenticated user + redirect to main page or ...
+                //========================= authenticated user
                 // Set User's ban
                 string methodName = context.ActionDescriptor.DisplayName?.Split('(')[0].Split('.').Last(); // for example: IActionResult GetAllUsers() => this line returns: GetAllUsers
                 if (CheckUserBan(
@@ -76,16 +73,15 @@ namespace KingJwtAuth.Attributes
                     context.Result = new RedirectToActionResult(TokenStatics.BandPageAction, TokenStatics.BandPageController, null);
                     return;
                 }
-                // record the log                
-                Log(httpContext, userLogService, false, methodName);
-                context.Result = new RedirectToActionResult(TokenStatics.DestinationActionAfterLogout, TokenStatics.DestinationControllerAfterLogout, null);
+                // record the log
+                Log(httpContext, userLogService, true, methodName);
             }
         }
-        private bool CheckUserBan(HttpContext httpContext, UsersSuspiciousService service,Guid? userId,string requestPath,string methodName)
+        private bool CheckUserBan(HttpContext httpContext, UsersSuspiciousService service, Guid? userId, string requestPath, string methodName)
         {
             var ip = httpContext.Connection.RemoteIpAddress?.ToString();
             var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
-            return service.CheckForBan(ip, userAgent, userId, requestPath,methodName);
+            return service.CheckForBan(ip, userAgent, userId, requestPath, methodName);
         }
         private UserTokenDto CheckAccessLogic(HttpContext httpContext, UserRefreshTokenService refreshTokenService, params UserRole[] roles)
         {
@@ -106,22 +102,12 @@ namespace KingJwtAuth.Attributes
             // check role
             if (valid && (roles.Any(r => r.ToString() == outUserTokenDto.Role)))
             {
-                //NOTE: Method [1] : to transfer the user's information
-                httpContext.Items["CurrentUser"] = outUserTokenDto;
-                //NOTE: Method [2] : to transfer the user's information
-                //var claims = new List<Claim> {
-                //    new Claim("UserId", outUserTokenDto.UserId),
-                //    new Claim("Role", outUserTokenDto.Role),
-                //};
-                //NOTE: Update the method [2]
-                //the following method Highly recommended by the King! though.
                 var claims = new List<Claim> {
                     new Claim(ClaimTypes.NameIdentifier, outUserTokenDto.UserId),
                     new Claim(ClaimTypes.Role, outUserTokenDto.Role),
                 };
                 var identity = new ClaimsIdentity(claims, "custom");
                 httpContext.User = new ClaimsPrincipal(identity);
-                //
 
                 return outUserTokenDto;
             }
@@ -158,7 +144,7 @@ namespace KingJwtAuth.Attributes
             ///////////////////////////////////////////////////////////////
 
 
-            var exp = DateTimeOffset.UtcNow.AddMinutes(TokenStatics.ExpirationDayAuthCookie);// TODO: change [AddMinutes] to [AddDays]
+            var exp = DateTimeOffset.UtcNow.AddDays(TokenStatics.ExpirationDayAuthCookie);// TODO: change [AddMinutes] to [AddDays]
             // generate token
             TokenAccessService tokenService = new TokenAccessService();
             UserTokenDto userTokenDto = new UserTokenDto()

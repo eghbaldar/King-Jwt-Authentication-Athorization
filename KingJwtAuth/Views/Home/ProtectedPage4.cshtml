@@ -1,0 +1,16 @@
+﻿@using System.Security.Claims
+@{
+    ViewData["Title"] = "Protected Page";
+    var claimIdentity = User.Identity as ClaimsIdentity;
+}
+<span>@User.Identity.IsAuthenticated</span>
+<ul>
+    <li><p>if you can see the TURE value: you are authenticated</p></li>
+    <li><p>if you can see the FALSE value: you are unauthenticated</p></li>
+</ul>
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <b class="red">@claimIdentity.FindFirst(ClaimTypes.Role).Value.ToString()</b>
+    }
+}

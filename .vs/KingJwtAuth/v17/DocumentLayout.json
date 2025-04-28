@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\_PROJECT_\\KingJwtAuth\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|d:\\_project_\\kingjwtauth\\kingjwtauth\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|d:\\_project_\\kingjwtauth\\kingjwtauth\\views\\home\\protectedpage2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A459572C-58B3-4B0E-A4E4-3620789D0E95}|KingJwtAuth\\KingJwtAuth.csproj|solutionrelative:kingjwtauth\\views\\home\\protectedpage2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,37 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProtectedPage2.cshtml",
-              "DocumentMoniker": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\Views\\Home\\ProtectedPage2.cshtml",
-              "RelativeDocumentMoniker": "KingJwtAuth\\Views\\Home\\ProtectedPage2.cshtml",
-              "ToolTip": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\Views\\Home\\ProtectedPage2.cshtml [Read Only]",
-              "RelativeToolTip": "KingJwtAuth\\Views\\Home\\ProtectedPage2.cshtml [Read Only]",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T12:03:34.094Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "KingJwtAuth\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\_PROJECT_\\KingJwtAuth\\KingJwtAuth\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "KingJwtAuth\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAgwCsAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-28T12:00:04.69Z",
-              "EditorCaption": ""
             }
           ]
         }
